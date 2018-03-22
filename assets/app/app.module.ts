@@ -3,7 +3,7 @@ import { routing } from './app.routing';
 import { HeaderComponent } from './header.component';
 import { MessageInputComponent } from './messages/message-input.component';
 import { MessageListComponent } from './messages/message-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from "./app.component";
@@ -29,7 +29,8 @@ import { SigninComponent } from './auth/signin.component';
     imports: [
         BrowserModule,
         FormsModule,
-        routing
+        routing,
+        ReactiveFormsModule
     ],
     bootstrap: [AppComponent]
 })
