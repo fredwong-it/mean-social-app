@@ -48,7 +48,7 @@ router.patch('/:id', function (req, res, next) {
             });
         }
 
-        if (message) {
+        if (!message) {
             return res.status(500).json({
                 title: 'An error occurred',
                 error: { message: 'MEssage not found' }
