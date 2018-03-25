@@ -7,7 +7,7 @@ router.post('/', function (req, res, next) {
         content: req.body.content
     });
 
-    message.save(function (err, result ) {
+    message.save(function (err, result) {
         if (err) {
             return res.status(500).json({
                 title: 'An error occurred',

@@ -12,6 +12,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { AuthenticationComponent } from './auth/authentication.component';
 import { LogoutComponent } from './auth/logout.component';
 import { SigninComponent } from './auth/signin.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { SigninComponent } from './auth/signin.component';
         BrowserModule,
         FormsModule,
         routing,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpModule
     ],
     bootstrap: [AppComponent]
 })
