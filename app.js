@@ -4,12 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
-var messagesRoutes = require('./routes/messages');
+var messageRoutes = require('./routes/messages');
 var userRoutes = require('./routes/user');
 
 var app = express();
+mongoose.connect('mongodb://admin:admin@ds231245.mlab.com:31245/mean-social');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
