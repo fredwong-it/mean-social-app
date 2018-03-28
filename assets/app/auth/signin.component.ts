@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {User} from './user.model';
+import {AuthService} from './auth.service';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -6,9 +9,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     templateUrl: './signin.component.html'
 })
 
-export class SigninComponent {
+export class SigninComponent implements OnInit {
     myForm: FormGroup;
 
+    constructor(private authService: AuthService, private router: Router) { }
+    
     ngOnInit() {
         this.myForm = new FormGroup({
             email: new FormControl(null, [
@@ -20,6 +25,19 @@ export class SigninComponent {
     }
 
     onSubmit() {
+        const user = new User(
+            this.myForm.value.email, 
+            this.myForm.value.password
+        );
+        this.authService.signin(user)
+            .subscribe(
+                data => {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('userId', data.userId);
+                    this.router.navigateByUrl('/');
+                },
+                error => console.error(error)
+            );
         this.myForm.reset();
     }
 }

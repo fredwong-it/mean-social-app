@@ -11,7 +11,7 @@ import { User } from './user.model';
 export class SignupComponent implements OnInit {
     myForm: FormGroup;
 
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService) { }
 
     ngOnInit() {
         this.myForm = new FormGroup({
