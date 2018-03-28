@@ -23,4 +23,12 @@ export class AuthService {
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }
+
+    logout() {
+        localStorage.clear();       // without the token I can't access restrict resources
+    }
+
+    isLoggedIn() {
+        return localStorage.getItem('token') !== null;
+    }
 }
