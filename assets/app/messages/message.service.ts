@@ -14,7 +14,8 @@ export class MessageService {
     addMessage(message: Message) {
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/message', message)
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.post('http://localhost:3000/message' + token, message)
             .map((response: Response) => {
                 // the new message will contain the _id for editing before reloading the page
                 const result = response.json();
@@ -46,7 +47,8 @@ export class MessageService {
     updateMessage(message: Message) {
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.patch('http://localhost:3000/message/' + message.messageId, message)
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.patch('http://localhost:3000/message/' + message.messageId + token, message)
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -54,9 +56,9 @@ export class MessageService {
     deleteMessage(message) {
         // front end delete
         this.messages.splice(this.messages.indexOf(message), 1);
-
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         // back end delete
-        return this.http.delete('http://localhost:3000/message/' + message.messageId)
+        return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }
