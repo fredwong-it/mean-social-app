@@ -19,7 +19,11 @@ export class MessageService {
             .map((response: Response) => {
                 // the new message will contain the _id for editing before reloading the page
                 const result = response.json();
-                const message = new Message(result.obj.content, 'Dummy', result.obj._id, null);
+                const message = new Message(
+                    result.obj.content, 
+                    result.obj.user.firstName, 
+                    result.obj._id, 
+                    result.obj.user._id);
                 this.messages.push(message);
                 return message;
             })                       // automatically convert the result to Observable
@@ -32,7 +36,11 @@ export class MessageService {
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
                 for (let message of messages) {
-                    transformedMessages.push(new Message(message.content, 'Dummy', message._id, null));
+                    transformedMessages.push(new Message(
+                        message.content, 
+                        message.user.firstName, 
+                        message._id, 
+                        message.user._id));
                 }
                 this.messages = transformedMessages;
                 return transformedMessages;
