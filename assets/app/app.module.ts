@@ -14,6 +14,7 @@ import { AuthenticationComponent } from './auth/authentication.component';
 import { LogoutComponent } from './auth/logout.component';
 import { SigninComponent } from './auth/signin.component';
 import { HttpModule } from '@angular/http';
+import { ErrorComponent } from './errors/error.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { HttpModule } from '@angular/http';
         HeaderComponent,
         LogoutComponent,
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule,
