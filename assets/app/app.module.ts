@@ -1,4 +1,4 @@
-import { Errorservice } from './errors/error.service';
+import { ErrorService } from './errors/error.service';
 import { AuthService } from './auth/auth.service';
 import { SignupComponent } from './auth/signup.component';
 import { routing } from './app.routing';
@@ -40,7 +40,7 @@ import { ErrorComponent } from './errors/error.component';
     ],
     providers: [
         AuthService,
-        Errorservice
+        ErrorService
     ],
     bootstrap: [AppComponent]
 })

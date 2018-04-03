@@ -1,7 +1,7 @@
 import { Error } from './error.model';
 import { EventEmitter } from '@angular/core';
 
-export class Errorservice {
+export class ErrorService {
     errorOccurred = new EventEmitter<Error>();
 
     handleError(error: any) {
