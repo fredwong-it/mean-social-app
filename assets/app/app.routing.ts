@@ -1,7 +1,6 @@
 import { AuthenticationComponent } from './auth/authentication.component';
 import { MessagesComponent } from './messages/messages.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AUTH_ROUTES } from './auth/auth.routes';
 
 const APP_ROUTES: Routes = [
     { path: '', redirectTo: '/messages', pathMatch: 'full' },
@@ -9,7 +8,7 @@ const APP_ROUTES: Routes = [
     { 
         path: 'auth', 
         component: AuthenticationComponent,
-        children: AUTH_ROUTES
+        loadChildren: './auth/auth.module#AuthModule'
     }
 ];
 
